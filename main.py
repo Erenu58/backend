@@ -46,11 +46,11 @@ security = HTTPBearer()
 
 # --- MODELLER ---
 class UserRegister(BaseModel):
-    email: str  # EmailStr yerine sadece str yazıyoruz
+    email: str  # Burası da str olmalı
     password: str = Field(..., min_length=6)
 
 class UserLogin(BaseModel):
-    email: EmailStr
+    email: str  # EmailStr yerine str yazdık
     password: str
 
 class FortuneAnalyze(BaseModel):
