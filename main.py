@@ -2,7 +2,7 @@ from fastapi import FastAPI, APIRouter, HTTPException, Depends, status
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from fastapi.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
-from pydantic import BaseModel, Field, EmailStr
+from pydantic import BaseModel, Field
 from typing import List, Optional
 from datetime import datetime, timedelta
 from pathlib import Path
@@ -46,8 +46,7 @@ security = HTTPBearer()
 
 # --- MODELLER ---
 class UserRegister(BaseModel):
-    name: str = Field(..., min_length=2)
-    email: EmailStr
+    email: str  # EmailStr yerine sadece str yazıyoruz
     password: str = Field(..., min_length=6)
 
 class UserLogin(BaseModel):
